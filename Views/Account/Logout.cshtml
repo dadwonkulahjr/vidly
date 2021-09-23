@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Logout";
+}
+
+<div class="container mt-3">
+    <form method="post" asp-action="logout">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <p>
+                    Are you sure you want to logout?
+                </p>
+                <p>
+                    <button class="mt-2 btn-primary btn-lg" type="submit">
+                        <i class="fa fa-sign-out-alt"></i>&nbsp;Yes
+                    </button>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="mt-2 btn-success btn-lg" asp-action="index" asp-controller="customers">
+                            <i class="fa fa-angry"></i>&nbsp;No
+                        </a>
+                    }
+                </p>
+            </div>
+        </div>
+    </form>
+</div>

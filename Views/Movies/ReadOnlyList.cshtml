@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "List of movies";
+}
+<style>
+    h2 {
+        font-family: Verdana;
+    }
+</style>
+
+<h2 class="mb-3">
+    Movies
+</h2>
+@*<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+        <a class="btn btn-primary" asp-action="new">
+            <i class="fa fa-plus-circle"></i>&nbsp;NEW MOVIE
+        </a>
+    </div>
+</div>*@
+<hr />
+
+<table id="movies" class="table table-bordered table-striped table-hover mb-5" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+            <th>Number in Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section Scripts{ 
+    <script src="~/js/readonlylist.js"></script>
+}

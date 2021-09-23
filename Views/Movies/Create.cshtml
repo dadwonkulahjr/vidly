@@ -1,0 +1,76 @@
+﻿@model CreateMovieViewModel
+@{
+    ViewData["Title"] = "Create new movie";
+}
+
+@if (Model.Id == 0)
+{
+    <h2>
+        <i class="fa fa-plus-circle"></i>&nbsp;Create New Movie
+    </h2>
+}
+else
+{
+    <h2>
+        <i class="fa fa-pencil-alt"></i>&nbsp;Edit Movie
+
+    </h2>
+}
+<hr />
+<form method="post">
+    @*@if (Model..GenreId != 0)
+    {
+        <input asp-for="Movie.GenreId" hidden="hidden" />
+        <input asp-for="Movie.Genre.Id" hidden="hidden" />
+    }*@
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" placeholder="Enter the movie name..." />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="ReleaseDate"></label>
+        <input asp-for="ReleaseDate" class="form-control"/>
+        <span class="text-danger" asp-validation-for="ReleaseDate"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="GenreId" class="col-form-label"></label>
+         <select asp-for="GenreId" asp-items="Model.DropdownListForGenre" class="form-select">
+             <option value="">--Select genre--</option>
+         </select>
+        <span asp-validation-for="GenreId" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="NumberInStock"></label>
+        <input asp-for="NumberInStock" class="form-control" />
+        <span class="text-danger" asp-validation-for="NumberInStock"></span>
+    </div>
+    @if (Model.Id == 0)
+    {
+        <div class="form-group mt-2">
+            <button class="btn btn-primary">
+                <i class="fa fa-save"></i>&nbsp;Save
+            </button>
+            <a class="btn btn-lg" asp-action="random">
+                <i class="fa fa-arrow-alt-circle-left"></i>&nbsp;Back to List
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="form-group mt-2">
+            <button class="btn btn-primary">
+                <i class="fa fa-pen"></i>&nbsp;Update
+            </button>
+            <a class="btn btn-link" asp-action="random">
+                <i class="fa fa-arrow-alt-circle-left"></i>&nbsp;Back to List
+            </a>
+        </div>
+    }
+</form>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

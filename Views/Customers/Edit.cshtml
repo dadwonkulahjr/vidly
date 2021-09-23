@@ -1,0 +1,59 @@
+﻿@model NewCustomerViewModel
+@{
+    ViewData["Title"] = "Create new customer";
+}
+
+<h2>
+    <i class="fa fa-pencil-alt"></i>&nbsp;Edit
+</h2>
+<hr />
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input asp-for="Customer.Id" hidden="hidden" />
+    <div class="form-group">
+        <label asp-for="Customer.Name" class="col-form-label"></label>
+        <input asp-for="Customer.Name" placeholder="Enter your name..." class="form-control" />
+        <span asp-validation-for="Customer.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.BirthDate" class="col-form-label">Date Of Birth</label>
+        <input asp-for="Customer.BirthDate" placeholder="Enter your name..." class="form-control" />
+        <span asp-validation-for="Customer.BirthDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.GenderId" class="col-form-label">Gender</label>
+        @Html.DropDownListFor(c => c.Customer.GenderId,
+            Model.DropdownListForGenders,
+            "-Please select gender-",
+            new { @class = "form-select" })
+        <span asp-validation-for="Customer.GenderId" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.MembershipTypeId" class="col-form-label">Membership Type</label>
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId,
+            Model.DropdownListForMembershipTypes,
+            "-Please select membership type-",
+            new { @class = "form-select" })
+        <span asp-validation-for="Customer.MembershipTypeId" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <div class="form-check">
+            <input class="form-check-input" asp-for="Customer.IsSubscribedToNewsLetter">
+            <label class="form-check-label" asp-for="Customer.IsSubscribedToNewsLetter">
+                Subscribed to our newsletter?
+            </label>
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <button class="btn btn-primary">
+            <i class="fa fa-save"></i>&nbsp;Save
+        </button>
+        <a asp-action="index" class="btn btn-link">Back to List</a>
+    </div>
+</form>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

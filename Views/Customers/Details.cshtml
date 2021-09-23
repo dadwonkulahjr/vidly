@@ -1,0 +1,19 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Customer details";
+}
+
+<h2>
+    @Model.Name
+</h2>
+<ul>
+    <li>Membership Type: @Model.MembershipType.Name</li>
+    @if (Model.BirthDate.HasValue)
+    {
+        <li>BirthDate: @Model.BirthDate.Value.ToShortDateString()</li>
+    }
+    <li>Gender: @Model.Gender.Name</li>
+</ul>
+<a class="btn btn-link" asp-action="index">
+    <i class="fa fa-arrow-alt-circle-left"></i>&nbsp;Back to List
+</a>

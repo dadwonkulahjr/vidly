@@ -1,0 +1,18 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "Movie details";
+}
+
+<h2>
+    @Model.Name
+</h2>
+<ul>
+    <li>Genre: @Model.Genre.Name</li>
+    <li>Release Date: @Model.Genre.ReleaseDate.Value.ToLongDateString()</li>
+    <li>Date Added: @Model.Genre.DateAdded.Value.ToLongDateString()</li>
+    <li>Number in Stock: @Model.Genre.NumberInStock</li>
+</ul>
+
+<a class="btn btn-link" asp-action="random" >
+    <i class="fa fa-arrow-alt-circle-left"></i>&nbsp;Back to List
+</a>
